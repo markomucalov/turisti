@@ -1,11 +1,12 @@
+package model;
 import java.util.LinkedList;
 
 public class Tura {
 	public LinkedList<Termin> termini;
 	public LinkedList<Komentar> komentari;
 	public String opisTure;
-	double ocena;
-	double cena;
+	public double ocena;
+	public double cena;
 	public Vodic vodic;
 	public String naslovTure;
 	

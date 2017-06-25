@@ -1,4 +1,4 @@
-
+package model;
 public abstract class Korisnik {
 	private String korisnickoIme;
 	private String sifra;
