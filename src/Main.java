@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Tura t = new Tura();
-		t.naslovTure = "Nova kul tura";
+		t.naslovTure = "Nova kul tura!";
 		t.opisTure = "Ovo je najjaca tura ikada, uzivacete sigurno!\n Obilazice se mnogi gradovi, sto ce omoguciti veseo provod!\nPosetite nas sajt za vise informacija! Bice Vam super,videcete!";
 		t.cena = 150.0;
 		t.ocena = 4.5;
