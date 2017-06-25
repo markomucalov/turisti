@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,9 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import model.Komentar;
+import model.Komentari;
 import model.Korisnik;
 
-public class KomPanel extends JPanel {
+public class KomPanel extends JPanel implements Observer {
 
 	/**
 	 * 
@@ -23,18 +26,21 @@ public class KomPanel extends JPanel {
 	
 	
 	
-	private LinkedList<Komentar> komentari;
+	private Komentari komentari;
 	private Korisnik ulogovaniKorisnik;
 	private JButton dodajKomentarDugme;
+	private JPanel panel;
 	
 	
-	static void pokreniDodajKomentarDialog(){
-		
+	private void pokreniDodajKomentarDialog(){
+		DodajKomDialog  komDialog = new DodajKomDialog(this.komentari,this.ulogovaniKorisnik);
+		komDialog.setVisible(true);
 	}
 	
 	
 	KomPanel(LinkedList<Komentar> komentari,Korisnik ulogovaniKorisnik){
-		this.komentari = komentari;
+		this.komentari = new Komentari(komentari);
+		this.komentari.addObserver(this);
 		this.ulogovaniKorisnik = ulogovaniKorisnik;
 		
 		BoxLayout komform = new BoxLayout(this,BoxLayout.Y_AXIS);
@@ -61,19 +67,31 @@ public class KomPanel extends JPanel {
 			this.add(komLabela);
 		}
 		
-		JPanel panel = new JPanel();
+		this.panel = new JPanel();
 		BoxLayout form = new BoxLayout(panel,BoxLayout.Y_AXIS);
 		panel.setLayout(form);
 		JScrollPane jscroll = new JScrollPane(panel);
-		if(this.komentari.size()==0){
+		if(this.komentari.komentari.size()==0){
 			panel.add(new JLabel("Nema komentara!"));
 		}
 		else{
-			for(Komentar kom:this.komentari){
+			for(Komentar kom:this.komentari.komentari){
 				panel.add(new KomentarIzgled(kom));
 			}
 			this.add(jscroll);
 	}
+		
+	}
+
+
+	@Override
+	public void update(Observable arg0, Object arg1){
+		LinkedList<Komentar> lista = ((Komentari)arg0).komentari;
+		Komentar poslednji = lista.getLast();
+		
+		panel.add(new KomentarIzgled(poslednji));
+		panel.revalidate();
+		panel.repaint();
 		
 	}
 	

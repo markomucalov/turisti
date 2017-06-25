@@ -6,7 +6,7 @@ public class Komentar {
 	private String sadrzina;
 	private Korisnik autor;
 	
-	Komentar(){}
+	public Komentar(){}
 	
 	public Komentar(Date datumPostavljanja, String sadrzina, Korisnik autor) {
 		super();
