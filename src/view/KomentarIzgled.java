@@ -1,3 +1,5 @@
+package view;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -5,6 +7,8 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import model.Komentar;
 
 public class KomentarIzgled extends JPanel {
 	/**

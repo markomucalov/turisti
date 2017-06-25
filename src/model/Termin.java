@@ -1,45 +1,28 @@
 package model;
-
-import java.util.ArrayList;
+import java.util.Date;
 
 public class Termin {
-
-	private String pocetakTutre;
-	private String krajTure;
-	private int brojSlobodnihMesta;
-	private boolean aktivan;
-	private double cena;
-	private ArrayList<Rezervacija> rezervacije;
-
-	public Termin() {
-		super();
+	
+	Date datumPocetka;
+	Date datumZavrsetka;
+	int brojSlobodnihMesta;
+	
+	Termin(){}
+	
+	public Date getDatumPocetka() {
+		return datumPocetka;
 	}
 
-	public Termin(String pocetakTutre, String krajTure, int brojSlobodnihMesta, boolean aktivan, double cena,
-			ArrayList<Rezervacija> rezervacije) {
-		super();
-		this.pocetakTutre = pocetakTutre;
-		this.krajTure = krajTure;
-		this.brojSlobodnihMesta = brojSlobodnihMesta;
-		this.aktivan = aktivan;
-		this.cena = cena;
-		this.rezervacije = rezervacije;
+	public void setDatumPocetka(Date datumPocetka) {
+		this.datumPocetka = datumPocetka;
 	}
 
-	public String getPocetakTutre() {
-		return pocetakTutre;
+	public Date getDatumZavrsetka() {
+		return datumZavrsetka;
 	}
 
-	public void setPocetakTutre(String pocetakTutre) {
-		this.pocetakTutre = pocetakTutre;
-	}
-
-	public String getKrajTure() {
-		return krajTure;
-	}
-
-	public void setKrajTure(String krajTure) {
-		this.krajTure = krajTure;
+	public void setDatumZavrsetka(Date datumZavrsetka) {
+		this.datumZavrsetka = datumZavrsetka;
 	}
 
 	public int getBrojSlobodnihMesta() {
@@ -50,27 +33,13 @@ public class Termin {
 		this.brojSlobodnihMesta = brojSlobodnihMesta;
 	}
 
-	public boolean isAktivan() {
-		return aktivan;
+	public Termin(Date datumPocetka, Date datumZavrsetka, int brojSlobodnihMesta) {
+		super();
+		this.datumPocetka = datumPocetka;
+		this.datumZavrsetka = datumZavrsetka;
+		this.brojSlobodnihMesta = brojSlobodnihMesta;
 	}
-
-	public void setAktivan(boolean aktivan) {
-		this.aktivan = aktivan;
-	}
-
-	public double getCena() {
-		return cena;
-	}
-
-	public void setCena(double cena) {
-		this.cena = cena;
-	}
-
-	public ArrayList<Rezervacija> getRezervacije() {
-		return rezervacije;
-	}
-
-	public void setRezervacije(ArrayList<Rezervacija> rezervacije) {
-		this.rezervacije = rezervacije;
-	}
+	
+	
+	
 }

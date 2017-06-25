@@ -1,3 +1,4 @@
+package view;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import model.Komentar;
+import model.Korisnik;
 
 public class KomPanel extends JPanel {
 

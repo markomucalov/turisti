@@ -1,63 +1,37 @@
 package model;
-
 import java.util.Date;
 
 public class Komentar {
-	
+	private Date datumPostavljanja;
 	private String sadrzina;
-	private Date datumObjave;
-	private Tura tura;
-	private Korisnik korisnik;
+	private Korisnik autor;
 	
+	Komentar(){}
 	
-	public Komentar(String sadrzina, Date datumObjave, Tura tura, Korisnik korisnik) {
+	public Komentar(Date datumPostavljanja, String sadrzina, Korisnik autor) {
 		super();
+		this.datumPostavljanja = datumPostavljanja;
 		this.sadrzina = sadrzina;
-		this.datumObjave = datumObjave;
-		this.tura = tura;
-		this.korisnik = korisnik;
+		this.autor = autor;
 	}
 
-
+	public Date getDatumPostavljanja() {
+		return datumPostavljanja;
+	}
+	public void setDatumPostavljanja(Date datumPostavljanja) {
+		this.datumPostavljanja = datumPostavljanja;
+	}
 	public String getSadrzina() {
 		return sadrzina;
 	}
-
-
 	public void setSadrzina(String sadrzina) {
 		this.sadrzina = sadrzina;
 	}
-
-
-	public Date getDatumObjave() {
-		return datumObjave;
+	public Korisnik getAutor() {
+		return autor;
 	}
-
-
-	public void setDatumObjave(Date datumObjave) {
-		this.datumObjave = datumObjave;
-	}
-
-
-	public Tura getTura() {
-		return tura;
-	}
-
-
-	public void setTura(Tura tura) {
-		this.tura = tura;
-	}
-
-
-	public Korisnik getKorisnik() {
-		return korisnik;
-	}
-
-
-	public void setKorisnik(Korisnik korisnik) {
-		this.korisnik = korisnik;
+	public void setAutor(Korisnik autor) {
+		this.autor = autor;
 	}
 	
-	
-
 }
