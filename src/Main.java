@@ -19,7 +19,7 @@ public class Main {
 		for(int i=0;i<10;i++){
 			t.termini.add(new Termin(new Date(),new Date(),i+1));
 		}
-		TuraProzor tp = new TuraProzor(t);
+		TuraProzor tp = new TuraProzor(t,t.vodic);
 		tp.setVisible(true);
 
 	}

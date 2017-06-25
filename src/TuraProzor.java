@@ -22,6 +22,7 @@ public class TuraProzor extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	Tura tura;
+	Korisnik ulogovaniKorisnik;
 	
 	private void podesiVelicinu(){
 		Dimension velicinaEkrana = Toolkit.getDefaultToolkit().getScreenSize();
@@ -56,28 +57,10 @@ public class TuraProzor extends JFrame{
 	}
 	
 	private void podesiKomentare(){
-		JPanel kompanel = new JPanel();
-		BoxLayout komform = new BoxLayout(kompanel,BoxLayout.Y_AXIS);
-		kompanel.setLayout(komform);
-		JLabel komLabela = new JLabel("Komentari");
-		komLabela.setFont(new Font("Serif", Font.BOLD, 24));
-		kompanel.add(komLabela);
-		
-		JPanel panel = new JPanel();
-		BoxLayout form = new BoxLayout(panel,BoxLayout.Y_AXIS);
-		panel.setLayout(form);
-		JScrollPane jscroll = new JScrollPane(panel);
-		if(this.tura.komentari.size()==0){
-			panel.add(new JLabel("Nema komentara!"));
-		}
-		else{
-			for(Komentar kom:this.tura.komentari){
-				panel.add(new KomentarIzgled(kom));
-			}
-			kompanel.add(jscroll);
+		KomPanel kompanel = new KomPanel(this.tura.komentari,this.ulogovaniKorisnik);
 			this.add(kompanel);
 		}
-	}
+	
 	
 	private void podesiOpisTure(){
 		JPanel panel = new JPanel();
@@ -124,8 +107,9 @@ public class TuraProzor extends JFrame{
 		
 	}
 
-	TuraProzor(Tura tura){
+	TuraProzor(Tura tura,Korisnik ulogovaniKorisnik){
 		this.tura = tura;
+		this.ulogovaniKorisnik = ulogovaniKorisnik;
 		this.setTitle(tura.naslovTure);
 		podesiVelicinu();
 		omoguciIzlaz();
