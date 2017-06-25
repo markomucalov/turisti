@@ -40,8 +40,15 @@ public abstract class Korisnik {
 		while ((linija  = in.readLine()) != null){
 			linija = linija.trim();
 			String[] stringovi = linija.split("\\|");
-			Turista t = new Turista(stringovi[0].trim(),stringovi[1].trim());
-			korisnici.put(t.getKorisnicko_ime(), t);
+			
+			if (stringovi[2].equalsIgnoreCase("t")){
+				Turista t = new Turista(stringovi[0].trim(),stringovi[1].trim());
+				korisnici.put(t.getKorisnicko_ime(), t);
+			}else{
+				Vodic v = new Vodic(stringovi[0].trim(),stringovi[1].trim());
+				korisnici.put(v.getKorisnicko_ime(), v);
+			}
+			
 		}
 		in.close();
 	}

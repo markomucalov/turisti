@@ -26,7 +26,6 @@ public class LoginWindow extends JDialog{
 		super();
 		setSize(200,200);
 		setTitle("PRIJAVA");
-		setLocation(600, 250);
 		
 		JPanel p = new JPanel(new GridBagLayout());
 		GridBagConstraints cs = new GridBagConstraints();
@@ -71,6 +70,15 @@ public class LoginWindow extends JDialog{
 	    getContentPane().add(p, BorderLayout.CENTER);
         getContentPane().add(oc, BorderLayout.PAGE_END);
 	    
+        
+        
+		int w = getContentPane().getWidth();
+		int h = getContentPane().getHeight();
+		int[] koordinate = this.centriraj_prozor(w, h);
+		setLocation(koordinate[0], koordinate[1]);
+        
+        
+        
 		ok.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -98,9 +106,19 @@ public class LoginWindow extends JDialog{
 				
 			}
 		});
-		
-	
 	}
+	
+	public static int[] centriraj_prozor(int w,int h) {
+	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+	    
+	    int x = (int) ((dimension.getWidth() - w )/ 2);
+	    int y = (int) ((dimension.getHeight() - h) / 2);
+	    
+	    int[] niz = {x,y};
+	    return niz;
+	}
+	
+	
 	
 	public String getUsername() {
         return user.getText().trim();
