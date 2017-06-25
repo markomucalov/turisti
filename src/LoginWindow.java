@@ -86,7 +86,7 @@ public class LoginWindow extends JDialog{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					if (Korisnik.provjera_korisnika(getUsername(), getPassword())){
-						JOptionPane.showMessageDialog(LoginWindow.this, "Uspjesna registracija :)");
+						JOptionPane.showMessageDialog(LoginWindow.this, "Uspjesno logovanje :)");
 					}else{
 						JOptionPane.showMessageDialog(LoginWindow.this, "Kombinacija unijetog korisnickog imena i sifre ne postoji!!!");
 						user.setText("");

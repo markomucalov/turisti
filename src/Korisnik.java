@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 public abstract class Korisnik {
@@ -51,6 +53,29 @@ public abstract class Korisnik {
 			
 		}
 		in.close();
+	}
+	
+	public static void snimi_korisnike_u_fajl(HashMap<String, Korisnik> korisnici) throws IOException{
+		PrintWriter out = new PrintWriter(new FileWriter("korisnici.txt"));
+
+		for (String k : korisnici.keySet()) {
+			if (korisnici.get(k) instanceof Vodic){
+				out.println(korisnici.get(k).getKorisnicko_ime() + "|" + k + "|" + "v");
+			}else{
+				out.println(korisnici.get(k).getKorisnicko_ime() + "|" + k + "|" + "t");
+			}
+		}
+		out.close();
+	}
+	
+	
+	public static boolean korisnik_vec_postoji(String korisnicko_ime) throws IOException{
+		HashMap<String, Korisnik> korisnici = new HashMap<String,Korisnik>();
+		ucitaj_korisnike(korisnici);
+		if (korisnici.containsKey(korisnicko_ime)){
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean provjera_korisnika(String korisnicko_ime,String lozinka) throws IOException{
