@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import model.Korisnik;
 import model.Termin;
 import model.Tura;
+import model.Vodic;
 
 public class TuraProzor extends JFrame{
 
@@ -37,23 +38,24 @@ public class TuraProzor extends JFrame{
 	
 	
 	private void podesiInformacije(){
-		JLabel cenaLabela = new JLabel("\tCena: "+this.tura.cena);
-		cenaLabela.setFont(new Font("Serif", Font.BOLD, 24));
-		JLabel ocenaLabela = new JLabel("\tOcena: "+this.tura.ocena);
+		JLabel ocenaLabela = new JLabel("\tOcena: "+this.tura.getOcena());
 		ocenaLabela.setFont(new Font("Serif", Font.BOLD, 24));
-		JLabel vodicLabela = new JLabel("\tVodic: "+this.tura.vodic.getIme());
+		String vodiciImena = "";
+		for(Vodic v:this.tura.getVodici()){
+			vodiciImena += v.getIme() +" ";
+		}
+		JLabel vodicLabela = new JLabel("\tVodici: "+vodiciImena);
 		vodicLabela.setFont(new Font("Serif", Font.BOLD, 24));
 		JPanel panel = new JPanel();
 		BoxLayout form = new BoxLayout(panel,BoxLayout.Y_AXIS);
 		panel.setLayout(form);
-		panel.add(cenaLabela);
 		panel.add(ocenaLabela);
 		panel.add(vodicLabela);
 		this.add(panel);
 	}
 	
 	private void podesiKomentare(){
-		KomPanel kompanel = new KomPanel(this.tura.komentari,this.ulogovaniKorisnik);
+		KomPanel kompanel = new KomPanel(this.tura.getKomentari(),this.ulogovaniKorisnik);
 			this.add(kompanel);
 		}
 	
@@ -65,7 +67,7 @@ public class TuraProzor extends JFrame{
 		JLabel lab = new JLabel("Opis ture\n");
 		lab.setFont(new Font("Serif", Font.BOLD, 24));
 		panel.add(lab);
-		panel.add(new JLabel("<html><p>"+this.tura.opisTure+"</p></html>"));
+		panel.add(new JLabel("<html><p>"+this.tura.getOpis()+"</p></html>"));
 		this.add(panel);
 	}
 	
@@ -93,7 +95,7 @@ public class TuraProzor extends JFrame{
 		zaglavlje.addElement("Broj slobodnih mesta");
 	
 		Vector<String> trenutniRed;
-		for(Termin t:this.tura.termini){
+		for(Termin t:this.tura.getTermini()){
 			trenutniRed = new Vector<String>();
 			teloTabele.addElement(trenutniRed);
 			trenutniRed.addElement(sdf.format(t.getDatumPocetka()));
@@ -106,7 +108,7 @@ public class TuraProzor extends JFrame{
 	public TuraProzor(Tura tura,Korisnik ulogovaniKorisnik){
 		this.tura = tura;
 		this.ulogovaniKorisnik = ulogovaniKorisnik;
-		this.setTitle(tura.naslovTure);
+		this.setTitle(tura.getIdTure());
 		podesiVelicinu();
 		this.setLayout(new GridLayout(2,2));
 		podesiOpisTure();

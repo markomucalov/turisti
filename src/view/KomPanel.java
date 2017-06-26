@@ -3,7 +3,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -38,8 +38,8 @@ public class KomPanel extends JPanel implements Observer {
 	}
 	
 	
-	KomPanel(LinkedList<Komentar> komentari,Korisnik ulogovaniKorisnik){
-		this.komentari = new Komentari(komentari);
+	KomPanel(ArrayList<Komentar> komentari2,Korisnik ulogovaniKorisnik){
+		this.komentari = new Komentari(komentari2);
 		this.komentari.addObserver(this);
 		this.ulogovaniKorisnik = ulogovaniKorisnik;
 		
@@ -86,8 +86,8 @@ public class KomPanel extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1){
-		LinkedList<Komentar> lista = ((Komentari)arg0).komentari;
-		Komentar poslednji = lista.getLast();
+		ArrayList<Komentar> lista = ((Komentari)arg0).komentari;
+		Komentar poslednji = lista.get(lista.size()-1);
 		
 		panel.add(new KomentarIzgled(poslednji));
 		panel.revalidate();

@@ -1,40 +1,46 @@
 package model;
+
+import java.util.ArrayList;
+
 public abstract class Korisnik {
-	private String korisnickoIme;
-	private String sifra;
+	
+	private String korIme;
+	private String lozinka;
+
 	private String ime;
 	private String prezime;
+	private String telefon;
+	private ArrayList<Komentar> komentari;
+	private ArrayList <Rezervacija> rezervacije;
 	
-	public Korisnik(){
-		
-	}
-	
-	
-
-	public Korisnik(String korisnickoIme, String sifra, String ime, String prezime) {
+	public Korisnik(String korIme, String lozinka, String ime, String prezime, String telefon) {
 		super();
-		this.korisnickoIme = korisnickoIme;
-		this.sifra = sifra;
+		this.korIme = korIme;
+		this.lozinka = lozinka;
 		this.ime = ime;
 		this.prezime = prezime;
+		this.telefon = telefon;
+	}
+	
+	//TO DO
+	public void  rezervisiTuru(){};
+	public void otkaziTuru(){};
+	public void oceniTuru(){};	
+	
+	public String getKorIme() {
+		return korIme;
 	}
 
-
-
-	public String getKorisnickoIme() {
-		return korisnickoIme;
+	public void setKorIme(String korIme) {
+		this.korIme = korIme;
 	}
 
-	public void setKorisnickoIme(String korisnickoIme) {
-		this.korisnickoIme = korisnickoIme;
+	public String getLozinka() {
+		return lozinka;
 	}
 
-	public String getSifra() {
-		return sifra;
-	}
-
-	public void setSifra(String sifra) {
-		this.sifra = sifra;
+	public void setLozinka(String lozinka) {
+		this.lozinka = lozinka;
 	}
 
 	public String getIme() {
@@ -52,5 +58,29 @@ public abstract class Korisnik {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-		
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+
+	public ArrayList<Komentar> getKomentari() {
+		return komentari;
+	}
+
+	public void setKomentari(ArrayList<Komentar> komentari) {
+		this.komentari = komentari;
+	}
+
+	public ArrayList<Rezervacija> getRezervacije() {
+		return rezervacije;
+	}
+
+	public void setRezervacije(ArrayList<Rezervacija> rezervacije) {
+		this.rezervacije = rezervacije;
+	}
+	
 }

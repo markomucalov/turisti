@@ -23,7 +23,7 @@ public class KomentarIzgled extends JPanel {
 		SimpleDateFormat smdf = new SimpleDateFormat("dd.MM.yyyy. HH:mm");
 		JPanel gornji = new JPanel();
 		gornji.setLayout(new GridLayout(1,2));
-		JLabel autorKomentara = new JLabel(komentar.getAutor().getKorisnickoIme());
+		JLabel autorKomentara = new JLabel(komentar.getAutor().getKorIme());
 		autorKomentara.setFont(new Font("Serif", Font.ITALIC, 18));
 		gornji.add(autorKomentara);
 		gornji.add(new JLabel(smdf.format(komentar.getDatumPostavljanja())));

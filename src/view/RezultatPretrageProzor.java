@@ -2,7 +2,7 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -22,13 +22,13 @@ public class RezultatPretrageProzor extends JFrame{
 	//koliko znakova opisa da prikaze
 	private static final int velicinaUvoda = 50;
 	
-	private LinkedList<Tura> ture;
+	private ArrayList<Tura> ture;
 	private Korisnik ulogovaniKorisnik;
 	
-	public RezultatPretrageProzor(LinkedList<Tura> ture,Korisnik ulogovaniKorisnik){
+	public RezultatPretrageProzor(ArrayList<Tura> ture2,Korisnik ulogovaniKorisnik){
 		super();
 		this.ulogovaniKorisnik = ulogovaniKorisnik;
-		this.ture = ture;
+		this.ture = ture2;
 		podesiVelicinu();
 		podesiIzgled();
 	}

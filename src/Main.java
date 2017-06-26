@@ -1,5 +1,5 @@
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 
 import model.Komentar;
 import model.Termin;
@@ -15,29 +15,29 @@ public class Main {
 		GlavniProzor gp=new GlavniProzor();
 		gp.setVisible(true);
 		Tura t = new Tura();
-		t.naslovTure = "Nova kul tura";
-		t.opisTure = "Ovo je najjaca tura ikada, uzivacete sigurno!\n Obilazice se mnogi gradovi, sto ce omoguciti veseo provod!\nPosetite nas sajt za vise informacija! Bice Vam super,videcete!";
-		t.cena = 150.0;
-		t.ocena = 4.5;
-		t.vodic = new Vodic("Cooler","Cooler","Zoki","Smoki");
-		t.komentari = new LinkedList<Komentar>();
-		for(int i=0;i<10;i++){
-			t.komentari.push(new Komentar(new Date(),"Komentar broj: "+(i+1),t.vodic));
-			
-		}
-		t.termini = new LinkedList<Termin>();
-		for(int i=0;i<10;i++){
-			t.termini.add(new Termin(new Date(),new Date(),i+1));
-		}
-		TuraProzor tp = new TuraProzor(t,t.vodic);
-		tp.setVisible(true);
-		
-		LinkedList<Tura> ture = new LinkedList<Tura>();
+		t.setVodici(new ArrayList<Vodic>());
+		t.setIdTure("Nova kul tura");
+		t.setOpis("Ovo je najjaca tura ikada, uzivacete sigurno!\n Obilazice se mnogi gradovi, sto ce omoguciti veseo provod!\nPosetite nas sajt za vise informacija! Bice Vam super,videcete!");
+		t.setOcena(4);
+		ArrayList<Tura> ture = new ArrayList<Tura>();
 		for(int i=0;i<10;i++){
 			ture.add(t);
 		}
+		t.getVodici().add(new Vodic("Cooler","Cooler","Zoki","Smoki","",ture));
+		t.setKomentari(new ArrayList<Komentar>());
+		for(int i=0;i<10;i++){
+			t.getKomentari().add(new Komentar(new Date(),"Komentar broj: "+(i+1),t.getVodici().get(0)));
+			
+		}
+		t.setTermini(new ArrayList<Termin>());
+		for(int i=0;i<10;i++){
+			t.getTermini().add(new Termin(new Date(),new Date(),i+1));
+		}
+		TuraProzor tp = new TuraProzor(t,t.getVodici().get(0));
+		tp.setVisible(true);
 		
-		RezultatPretrageProzor rp = new RezultatPretrageProzor(ture,t.vodic);
+		
+		RezultatPretrageProzor rp = new RezultatPretrageProzor(ture,t.getVodici().get(0));
 		rp.setVisible(true);
 
 	}

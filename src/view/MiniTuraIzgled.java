@@ -50,14 +50,14 @@ public class MiniTuraIzgled extends JPanel {
 	private void podesiIzgled() {
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
-		JLabel naslov = new JLabel(this.tura.naslovTure);
+		JLabel naslov = new JLabel(this.tura.getIdTure());
 		naslov.setFont(new Font("Serif", Font.BOLD, 18));
 		JLabel kratakOpis  = new JLabel();
-		if(this.tura.opisTure.length() <=this.brojZnakova){
-			kratakOpis.setText(this.tura.opisTure);
+		if(this.tura.getOpis().length() <=this.brojZnakova){
+			kratakOpis.setText(this.tura.getOpis());
 		}
 		else{
-			String text = tura.opisTure.substring(0, brojZnakova)+"...";
+			String text = tura.getOpis().substring(0, brojZnakova)+"...";
 			kratakOpis.setText(text);
 		}
 		

@@ -1,12 +1,12 @@
 package model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Komentari extends Observable {
-	public LinkedList<Komentar> komentari;
+	public ArrayList<Komentar> komentari;
 	
-	public Komentari(LinkedList<Komentar> komentari){
+	public Komentari(ArrayList<Komentar> komentari){
 		super();
 		this.komentari = komentari;
 	}
