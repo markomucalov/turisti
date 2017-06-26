@@ -6,6 +6,7 @@ import model.Termin;
 import model.Tura;
 import model.Vodic;
 import view.GlavniProzor;
+import view.RezultatPretrageProzor;
 import view.TuraProzor;
 
 public class Main {
@@ -30,6 +31,14 @@ public class Main {
 		}
 		TuraProzor tp = new TuraProzor(t,t.vodic);
 		tp.setVisible(true);
+		
+		LinkedList<Tura> ture = new LinkedList<Tura>();
+		for(int i=0;i<10;i++){
+			ture.add(t);
+		}
+		
+		RezultatPretrageProzor rp = new RezultatPretrageProzor(ture,t.vodic);
+		rp.setVisible(true);
 
 	}
 

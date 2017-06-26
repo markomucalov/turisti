@@ -3,8 +3,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 
@@ -36,14 +34,7 @@ public class TuraProzor extends JFrame{
 		this.setSize(sirina/2, visina/2);
 	}
 	
-	//samo za test, uklanjamo ga posle
-	private void omoguciIzlaz(){
-		this.addWindowListener(new WindowAdapter() {
-	         public void windowClosing(WindowEvent windowEvent){
-	            System.exit(0);
-	         }        
-	      });
-	}
+	
 	
 	private void podesiInformacije(){
 		JLabel cenaLabela = new JLabel("\tCena: "+this.tura.cena);
@@ -89,7 +80,7 @@ public class TuraProzor extends JFrame{
 		Vector<Vector<String>> teloTabele = new Vector<Vector<String>>();
 		podesiTabelu(zaglavlje,teloTabele);
 		JTable tabela = new JTable(teloTabele,zaglavlje);
-		tabela.setCellSelectionEnabled(false);
+		tabela.setDefaultEditor(Object.class,null);//da ne moze da se edituje
 		JScrollPane jscroll = new JScrollPane(tabela);
 		terminPanel.add(jscroll);
 		this.add(terminPanel);
@@ -117,7 +108,6 @@ public class TuraProzor extends JFrame{
 		this.ulogovaniKorisnik = ulogovaniKorisnik;
 		this.setTitle(tura.naslovTure);
 		podesiVelicinu();
-		omoguciIzlaz();
 		this.setLayout(new GridLayout(2,2));
 		podesiOpisTure();
 		podesiInformacije();
