@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +23,7 @@ public class GlavniProzor extends JFrame {
 	public GlavniProzor() {
 
 		setSize(800, 600);
-
+		
 		setTitle("Turisticka agencija");
 
 		ImageIcon i = new ImageIcon("images/ikonica.png");
@@ -71,7 +72,10 @@ public class GlavniProzor extends JFrame {
 		imp.setLayout(new BorderLayout());
 		JLabel labela = new JLabel("Parametar pretrage: ");
 		JTextField text = new JTextField(10);
-
+		JButton trazi = new JButton("Trazi");
+		trazi.setMinimumSize(new Dimension(40,40));
+		
+			
 		JComboBox opcijePretrage = new JComboBox();
 		opcijePretrage.addItem("termin");
 		opcijePretrage.addItem("ocena");
@@ -82,16 +86,21 @@ public class GlavniProzor extends JFrame {
 		JPanel leviP = new JPanel();
 		JPanel srednjiP = new JPanel();
 		JPanel desniP = new JPanel();
-
+		
+		
 		imp.add(leviP, BorderLayout.WEST);
 		imp.add(srednjiP, BorderLayout.CENTER);
 		imp.add(desniP, BorderLayout.EAST);
 
 		desniP.add(new JLabel("Tip pretrage: "));
 		desniP.add(opcijePretrage);
-
+		
+		
 		desniP.add(labela);
 		desniP.add(text);
+		
+		desniP.add(trazi);
+		
 		add(imp, BorderLayout.NORTH);
 
 	}
