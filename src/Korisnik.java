@@ -74,7 +74,7 @@ public abstract class Korisnik {
 			linija = linija.trim();
 			String[] stringovi = linija.split("\\|");
 			
-			if (stringovi[2].equalsIgnoreCase("t")){
+			if (stringovi[5].equalsIgnoreCase("t")){
 				Turista t = new Turista(stringovi[0].trim(),stringovi[1].trim(),stringovi[2].trim(),stringovi[3].trim(),stringovi[4].trim());
 				korisnici.put(t.getKorisnicko_ime(), t);
 			}else{
@@ -91,9 +91,9 @@ public abstract class Korisnik {
 
 		for (String k : korisnici.keySet()) {
 			if (korisnici.get(k) instanceof Vodic){
-				out.println(korisnici.get(k).getKorisnicko_ime() + "|" + k + "|" + "v");
+				out.println(korisnici.get(k).getIme() + "|" + korisnici.get(k).getPrezime() + "|" + korisnici.get(k).getTelefon() + "|" + k + "|" + korisnici.get(k).getLozinka() + "|" + "v");
 			}else{
-				out.println(korisnici.get(k).getKorisnicko_ime() + "|" + k + "|" + "t");
+				out.println(korisnici.get(k).getIme() + "|" + korisnici.get(k).getPrezime() + "|" + korisnici.get(k).getTelefon() + "|" + k + "|" + korisnici.get(k).getLozinka() + "|" + "t");
 			}
 		}
 		out.close();

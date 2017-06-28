@@ -175,9 +175,9 @@ public class RegistrationWindow extends JDialog {
 					}else{
 						Korisnik k;
 						if (tip.getSelectedItem().equals("vodic")){
-							k = new Vodic(text_name.getText().trim(),text_surname.getText().trim(),phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
+							k = new Vodic(text_name.getText().trim(),text_surname.getText().trim(),text_phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
 						}else{
-							k = new Turista(text_name.getText().trim(),text_surname.getText().trim(),phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
+							k = new Turista(text_name.getText().trim(),text_surname.getText().trim(),text_phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
 						}
 						HashMap<String, Korisnik> korisnici = new HashMap<String,Korisnik>();
 						Korisnik.ucitaj_korisnike(korisnici);

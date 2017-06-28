@@ -1,6 +1,2 @@
-||t
-Igor|Igor|v
-Slaven|Slaven|t
-Dragana|Dragana|v
-Marko|Marko|t
-asfasf|asfasf|v
+asf|fsaf|fsafsa|fsaf|fasf|t
+ime|prezime|32421324|Slaven96|slaven|t
