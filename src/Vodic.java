@@ -5,7 +5,7 @@ public class Vodic extends Turista{
 		
 	}
 	
-	public Vodic(String korisnicko_ime,String lozinka){
-		super(korisnicko_ime,lozinka);
+	public Vodic(String ime,String prezime,String telefon,String korisnicko_ime,String lozinka){
+		super(ime,prezime,telefon,korisnicko_ime,lozinka);
 	}
 }

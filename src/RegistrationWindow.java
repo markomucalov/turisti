@@ -23,10 +23,16 @@ import org.omg.CORBA.TRANSACTION_MODE;
 
 public class RegistrationWindow extends JDialog {
 	JLabel text;
+	JLabel name;
+	JLabel surname;
+	JLabel phone_number;
 	JLabel username;
 	JLabel password;
 	JLabel tip_korisnika;
 	JComboBox<String> tip;
+	JTextField text_name;
+	JTextField text_surname;
+	JTextField text_phone_number;
 	JTextField user;
 	JPasswordField pass;
 	
@@ -35,7 +41,7 @@ public class RegistrationWindow extends JDialog {
 	
 	public RegistrationWindow(){
 		super();
-		setSize(395,275);
+		setSize(395,380);
 		setTitle("REGISTRACIJA");
 		
 		
@@ -53,35 +59,73 @@ public class RegistrationWindow extends JDialog {
 		GridBagConstraints cs = new GridBagConstraints();
 		cs.fill = GridBagConstraints.HORIZONTAL;
 		
-
 		
-		username = new JLabel("Unesite korisnicko ime za svoj nalog");
+		name = new JLabel("Unesite svoje ime");
 		cs.gridx = 0;
 	    cs.gridy = 0;
+	    cs.gridwidth = 1;
+	    p2.add(name,cs);
+	    
+	    text_name = new JTextField(15);
+		cs.gridx = 1;
+	    cs.gridy = 0;
+	    cs.gridwidth = 2;
+	    p2.add(text_name,cs);
+	    
+		
+		surname = new JLabel("Unesite svoje prezime");
+		cs.gridx = 0;
+	    cs.gridy = 1;
+	    cs.gridwidth = 1;
+	    p2.add(surname,cs);
+	    
+	    text_surname = new JTextField(15);
+		cs.gridx = 1;
+	    cs.gridy = 1;
+	    cs.gridwidth = 2;
+	    p2.add(text_surname,cs);
+	    
+		
+		phone_number = new JLabel("Unesite svoj broj telefona");
+		cs.gridx = 0;
+	    cs.gridy = 2;
+	    cs.gridwidth = 1;
+	    p2.add(phone_number,cs);
+
+		text_phone_number = new JTextField(15);
+		cs.gridx = 1;
+	    cs.gridy = 2;
+	    cs.gridwidth = 2;
+	    p2.add(text_phone_number,cs);
+	    
+	    
+		username = new JLabel("Unesite korisnicko ime za svoj nalog");
+		cs.gridx = 0;
+	    cs.gridy = 3;
 	    cs.gridwidth = 1;
 	    p2.add(username,cs);
 		
 	    user = new JTextField(15);
 	    cs.gridx = 1;
-	    cs.gridy = 0;
+	    cs.gridy = 3;
 	    cs.gridwidth = 2;
 	    p2.add(user,cs);
 	    
 	    password = new JLabel("Unesite lozinku za svoj nalog");
 	    cs.gridx = 0;
-	    cs.gridy = 1;
+	    cs.gridy = 4;
 	    cs.gridwidth = 1;
 	    p2.add(password,cs);
 	    
 	    pass = new JPasswordField(15);
 	    cs.gridx = 1;
-	    cs.gridy = 1;
+	    cs.gridy = 4;
 	    cs.gridwidth = 2;
 	    p2.add(pass,cs);
 
 	    tip_korisnika = new JLabel("tip korisnika");
 	    cs.gridx = 0;
-	    cs.gridy = 2;
+	    cs.gridy = 5;
 	    cs.gridwidth = 1;
 	    p2.add(tip_korisnika,cs);
 	    
@@ -90,7 +134,7 @@ public class RegistrationWindow extends JDialog {
 	    tip = new JComboBox<String>(tipovi_korisnika);
 	    tip.setVisible(true);
 	    cs.gridx = 1;
-	    cs.gridy = 2;
+	    cs.gridy = 5;
 	    cs.gridwidth = 2;
 	    p2.add(tip,cs);
 	    this.add(p2);
@@ -107,19 +151,22 @@ public class RegistrationWindow extends JDialog {
 	    getContentPane().add(p2, BorderLayout.CENTER);
         getContentPane().add(oc, BorderLayout.PAGE_END);
 	    
-        
-        
+     
 		int w = getContentPane().getWidth();
 		int h = getContentPane().getHeight();
 		int[] koordinate = this.centriraj_prozor(w, h);
 		setLocation(koordinate[0], koordinate[1]);
 		
 		
-		
 		potvrda.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				if (text_name.getText().trim().equals("")|| text_surname.getText().trim().equals("") || text_phone_number.getText().trim().equals("") || user.getText().trim().equals("") || pass.getText().trim().equals("")){
+					JOptionPane.showMessageDialog(RegistrationWindow.this, "Sva polja moraju biti popunjena!!!");
+				}
+				
 				try {
 					if (Korisnik.korisnik_vec_postoji(user.getText().trim())){
 						JOptionPane.showMessageDialog(RegistrationWindow.this,"Korisnicko ime koje ste unijeli vec postoji!!!");
@@ -128,9 +175,9 @@ public class RegistrationWindow extends JDialog {
 					}else{
 						Korisnik k;
 						if (tip.getSelectedItem().equals("vodic")){
-							k = new Vodic(user.getText().trim(),pass.getText().trim());
+							k = new Vodic(text_name.getText().trim(),text_surname.getText().trim(),phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
 						}else{
-							k = new Turista(user.getText().trim(),pass.getText().trim());
+							k = new Turista(text_name.getText().trim(),text_surname.getText().trim(),phone_number.getText().trim(),user.getText().trim(),pass.getText().trim());
 						}
 						HashMap<String, Korisnik> korisnici = new HashMap<String,Korisnik>();
 						Korisnik.ucitaj_korisnike(korisnici);

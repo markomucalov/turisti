@@ -6,6 +6,9 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 
 public abstract class Korisnik {
+	String ime;
+	String prezime;
+	String telefon;
 	String korisnicko_ime;
 	String lozinka;
 	
@@ -13,10 +16,38 @@ public abstract class Korisnik {
 		
 	}
 
-	public Korisnik(String korisnicko_ime, String lozinka) {
+	public Korisnik(String ime,String prezime,String telefon,String korisnicko_ime, String lozinka) {
 		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.telefon = telefon;
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
+	}
+	
+	
+	public String getIme() {
+		return ime;
+	}
+
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+
+	public String getPrezime() {
+		return prezime;
+	}
+
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
 	}
 
 	public String getKorisnicko_ime() {
@@ -44,10 +75,10 @@ public abstract class Korisnik {
 			String[] stringovi = linija.split("\\|");
 			
 			if (stringovi[2].equalsIgnoreCase("t")){
-				Turista t = new Turista(stringovi[0].trim(),stringovi[1].trim());
+				Turista t = new Turista(stringovi[0].trim(),stringovi[1].trim(),stringovi[2].trim(),stringovi[3].trim(),stringovi[4].trim());
 				korisnici.put(t.getKorisnicko_ime(), t);
 			}else{
-				Vodic v = new Vodic(stringovi[0].trim(),stringovi[1].trim());
+				Vodic v = new Vodic(stringovi[0].trim(),stringovi[1].trim(),stringovi[2].trim(),stringovi[3].trim(),stringovi[4].trim());
 				korisnici.put(v.getKorisnicko_ime(), v);
 			}
 			
