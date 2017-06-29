@@ -41,8 +41,8 @@ public class TuraProzor extends JFrame{
 		JLabel ocenaLabela = new JLabel("\tOcena: "+this.tura.getOcena());
 		ocenaLabela.setFont(new Font("Serif", Font.BOLD, 24));
 		String vodiciImena = "";
-		for(Vodic v:this.tura.getVodici()){
-			vodiciImena += v.getIme() +" ";
+		for(String v:this.tura.getVodici()){
+			vodiciImena += v+", ";
 		}
 		JLabel vodicLabela = new JLabel("\tVodici: "+vodiciImena);
 		vodicLabela.setFont(new Font("Serif", Font.BOLD, 24));
@@ -98,8 +98,8 @@ public class TuraProzor extends JFrame{
 		for(Termin t:this.tura.getTermini()){
 			trenutniRed = new Vector<String>();
 			teloTabele.addElement(trenutniRed);
-			trenutniRed.addElement(sdf.format(t.getDatumPocetka()));
-			trenutniRed.addElement(sdf.format(t.getDatumZavrsetka()));
+			trenutniRed.addElement(sdf.format(t.getPocetakTure()));
+			trenutniRed.addElement(sdf.format(t.getKrajTure()));
 			trenutniRed.addElement(t.getBrojSlobodnihMesta()+"");
 		}
 		

@@ -2,6 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+
+@JsonAutoDetect(fieldVisibility= Visibility.ANY)
+
 public class Tura {
 	
 	
@@ -9,27 +14,27 @@ public class Tura {
 	private String opis;
 	private int ocena;
 	private int minBrojMesta;
+	private String kreatortTure;
+	private ArrayList<String> vodici;
 	private ArrayList<Termin> termini;
-	private ArrayList<Vodic> vodici;
 	private ArrayList<Komentar> komentari;
 	private ArrayList<Mesto> gradovi;
 	private ArrayList<Destinacija> destinacije;
-	
-	
 	public Tura() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Tura(String idTure, String opis, int ocena, int minBrojMesta, ArrayList<Termin> termini,
-			ArrayList<Vodic> vodici, ArrayList<Komentar> komentari, ArrayList<Mesto> gradovi,
+	public Tura(String idTure, String opis, int ocena, int minBrojMesta, String kreatortTure, ArrayList<String> vodici,
+			ArrayList<Termin> termini, ArrayList<Komentar> komentari, ArrayList<Mesto> gradovi,
 			ArrayList<Destinacija> destinacije) {
 		super();
 		this.idTure = idTure;
 		this.opis = opis;
 		this.ocena = ocena;
 		this.minBrojMesta = minBrojMesta;
-		this.termini = termini;
+		this.kreatortTure = kreatortTure;
 		this.vodici = vodici;
+		this.termini = termini;
 		this.komentari = komentari;
 		this.gradovi = gradovi;
 		this.destinacije = destinacije;
@@ -58,17 +63,23 @@ public class Tura {
 	public void setMinBrojMesta(int minBrojMesta) {
 		this.minBrojMesta = minBrojMesta;
 	}
+	public String getKreatortTure() {
+		return kreatortTure;
+	}
+	public void setKreatortTure(String kreatortTure) {
+		this.kreatortTure = kreatortTure;
+	}
+	public ArrayList<String> getVodici() {
+		return vodici;
+	}
+	public void setVodici(ArrayList<String> vodici) {
+		this.vodici = vodici;
+	}
 	public ArrayList<Termin> getTermini() {
 		return termini;
 	}
 	public void setTermini(ArrayList<Termin> termini) {
 		this.termini = termini;
-	}
-	public ArrayList<Vodic> getVodici() {
-		return vodici;
-	}
-	public void setVodici(ArrayList<Vodic> vodici) {
-		this.vodici = vodici;
 	}
 	public ArrayList<Komentar> getKomentari() {
 		return komentari;
@@ -88,6 +99,12 @@ public class Tura {
 	public void setDestinacije(ArrayList<Destinacija> destinacije) {
 		this.destinacije = destinacije;
 	}
-
+	@Override
+	public String toString() {
+		return "Tura [idTure=" + idTure + ", opis=" + opis + ", ocena=" + ocena + ", minBrojMesta=" + minBrojMesta
+				+ ", kreatortTure=" + kreatortTure + ", vodici=" + vodici + ", termini=" + termini + ", komentari="
+				+ komentari + ", gradovi=" + gradovi + ", destinacije=" + destinacije + "]";
+	}
+	
 	
 }
