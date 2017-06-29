@@ -6,7 +6,7 @@ public class Destinacija {
 		private String opis;
 		private Mesto mesto;
 		
-		
+		public Destinacija(){};
 		public Destinacija(String naziv, String opis, Mesto mesto) {
 			super();
 			this.naziv = naziv;

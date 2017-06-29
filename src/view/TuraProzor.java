@@ -89,7 +89,6 @@ public class TuraProzor extends JFrame{
 	}
 	
 	private void podesiTabelu(Vector<String> zaglavlje, Vector<Vector<String>> teloTabele) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
 		zaglavlje.addElement("Pocetak");
 		zaglavlje.addElement("Zavrsetak");
 		zaglavlje.addElement("Broj slobodnih mesta");
@@ -98,8 +97,8 @@ public class TuraProzor extends JFrame{
 		for(Termin t:this.tura.getTermini()){
 			trenutniRed = new Vector<String>();
 			teloTabele.addElement(trenutniRed);
-			trenutniRed.addElement(sdf.format(t.getPocetakTure()));
-			trenutniRed.addElement(sdf.format(t.getKrajTure()));
+			trenutniRed.addElement(t.getPocetakTure());
+			trenutniRed.addElement(t.getKrajTure());
 			trenutniRed.addElement(t.getBrojSlobodnihMesta()+"");
 		}
 		

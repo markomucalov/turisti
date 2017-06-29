@@ -4,7 +4,7 @@ public class Mesto {
 
 		private String naziv;
 		private int ptt;
-		
+		public Mesto(){};
 		
 		
 		public String getNaziv() {
