@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +16,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import controller.Aplikacija;
+import model.Tura;
 
 public class GlavniProzor extends JFrame {
 
@@ -85,6 +90,7 @@ public class GlavniProzor extends JFrame {
 		JLabel labela = new JLabel("Parametar pretrage: ");
 		JTextField text = new JTextField(10);
 		JButton trazi = new JButton("Trazi");
+	
 		trazi.setMinimumSize(new Dimension(40,40));
 		
 			
@@ -114,6 +120,25 @@ public class GlavniProzor extends JFrame {
 		desniP.add(trazi);
 		
 		add(imp, BorderLayout.NORTH);
+		
+		
+		
+		trazi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String tip=(String)opcijePretrage.getSelectedItem();
+				String parametar = (String) text.getText();
+				
+				ArrayList<Tura> ture=Aplikacija.pretraziTure(tip, parametar);
+				if(ture.size()==0){
+			        JOptionPane.showMessageDialog(null, "Nije pronadjena ni jedna tura.", "Informacija: ", JOptionPane.INFORMATION_MESSAGE);
+				}else{
+					RezultatPretrageProzor rp = new RezultatPretrageProzor(ture, Aplikacija.trenutnoAktivan);
+					rp.show();
+				}
+				
+				
+			}
+		});
 
 	}
 
